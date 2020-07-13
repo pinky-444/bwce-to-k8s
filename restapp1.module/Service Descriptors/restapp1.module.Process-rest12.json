@@ -1,0 +1,32 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "rest12",
+    "description" : "rest12 service"
+  },
+  "host" : "localhost:8081",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/rest12" : {
+      "get" : {
+        "summary" : "getRest12",
+        "description" : "getRest12",
+        "operationId" : "get-rest12",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}
