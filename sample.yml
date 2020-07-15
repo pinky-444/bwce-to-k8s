@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample
+  namespace: tibco
+spec:
+  type: NodePort
+  selector:
+    app: sample
+  ports:
+    - protocol: TCP
+      name: sample 
+      port: 32201
+      targetPort: 32201
+      nodePort: 32201
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample
+  namespace: tibco
+spec:
+  selector:
+    matchLabels:
+      app: sample
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample
+    spec:
+      containers:
+      - name: sample
+        image: 'ip-172-31-45-42.ap-south-1.compute.internal:5000/sample:latest' 
+        imagePullPolicy: Always
