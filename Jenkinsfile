@@ -9,13 +9,6 @@ pipeline {
         DOCKER_IMAGE = "sample"
     }
     stages {
-      stage('Cleanup')
-      {
-        steps {
-          echo "Cleaning it up..."
-          echo currentBuild.projectName
-        }
-      }
       stage('Docker Build') 
       {
         steps {
