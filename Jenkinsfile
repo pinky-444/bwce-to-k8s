@@ -5,10 +5,7 @@ pipeline {
     }
     environment {
       // Configure in global tool setting of jenkins slave or master
-        #SLACK_UPLOAD_FILE_TOKEN = "dev-slack-app-token"
         CMDLINE = "clean initialize package"
-        #AWS_SECRET_ACCESS_KEY = "$AWS_SECRET_ACCESS_KEY_DEV"
-        #AWS_ACCESS_KEY_ID = "$AWS_ACCESS_KEY_ID_DEV"
         DEV_ECR_URL = "ip-172-31-45-42.ap-south-1.compute.internal:5000/sample"
         POD_PATTERN = "sample-"
         K8S_NAMESPACE = "tibco"
@@ -35,13 +32,9 @@ pipeline {
           echo "Deploying..."
           sh '''
             export THISTAG=`date "+%y%m%d%H%M"`
-            #aws ecr get-login-password --region us-east-2 | docker login -u AWS --password-stdin $DEV_ECR_URL
 
             docker tag $DOCKER_IMAGE:latest $DEV_ECR_URL:$THISTAG
             docker push $DEV_ECR_URL:$THISTAG
-
-            docker tag $DOCKER_IMAGE:latest $DEV_ECR_URL:dev
-            docker push $DEV_ECR_URL:dev
           '''
         }
       }
