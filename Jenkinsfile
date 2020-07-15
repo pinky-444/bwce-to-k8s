@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+      maven 'Apache Maven 3.6.3'
+    }
     environment {
       // Configure in global tool setting of jenkins slave or master
         CMDLINE = "clean initialize package"
@@ -9,6 +12,13 @@ pipeline {
         DOCKER_IMAGE = "sample"
     }
     stages {
+      stage('Cleanup')
+      {
+        steps {
+          echo "Cleaning it up..."
+          echo currentBuild.projectName
+        }
+      }        
       stage('Docker Build') 
       {
         steps {
