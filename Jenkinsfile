@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-      maven 'Maven 3.6.3'
-    }
     environment {
       // Configure in global tool setting of jenkins slave or master
         CMDLINE = "clean initialize package"
