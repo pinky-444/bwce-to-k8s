@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-      maven 'maven 3.6.2'
+      maven 'maven 3.6.3'
     }
     environment {
       // Configure in global tool setting of jenkins slave or master
